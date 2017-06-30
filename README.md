@@ -1,10 +1,10 @@
-#Case Study 01
-author: "Rangaswamy Nagarajan"
-date: "June 30, 2017"
+#Case Study 01 <br />
+author: "Rangaswamy Nagarajan" <br />
+date: "June 30, 2017"<br /> 
 
 This is a Case Study created for MSDS 6306 course based on Beers.csv and Breweries.csv provided.
 
-#Data Set Info
+#Data Set Info <br />
 
 Two data sets are available for analysis. Beers and Breweries
 
