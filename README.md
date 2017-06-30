@@ -1,13 +1,17 @@
 #Case Study 01
+author: "Rangaswamy Nagarajan"
+date: "June 30, 2017"
+
 This is a Case Study created for MSDS 6306 course based on Beers.csv and Breweries.csv provided.
 
 #Data Set Info
+
 Two data sets are available for analysis. Beers and Breweries
 
-Breweries dataset contains the list of all the breweries by city and statewise in the USA.
+Breweries dataset contains the list of all the breweries by City and Statewise in the USA.
 It also contains the Name of the brewery and an ID for the brewery.
 
-Beers dataset contains list of all the beers available in USA.
+Beers dataset contains a list of beers available in USA.
 The details that are avaialble in the dataset are Name, Beer ID, Brewery ID, Alcohol by Volume(ABV), International Bitterness Unit(IBU), Style and Ounces.
 Based on the Brewery ID information we can tie the data back to the Brewery data and identify where a particular Beer was brewed.
 
