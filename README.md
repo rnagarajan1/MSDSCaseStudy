@@ -15,10 +15,27 @@ Beers dataset contains a list of beers available in USA.
 The details that are avaialble in the dataset are Name, Beer ID, Brewery ID, Alcohol by Volume(ABV), International Bitterness Unit(IBU), Style and Ounces.
 Based on the Brewery ID information we can tie the data back to the Brewery data and identify where a particular Beer was brewed.
 
-#Common glossary terms used for this data set.
-  * ABV: Alcohol by Volume.
-  * IBU: International Bitterness Unit(IBU).
-  * Style: Type of Beer.  
+A manually created StateNames.csv is also included as a dataset to represent state names instead of the codes in the output. The dataset has 51 US state codes and names. This data is merged with the Brewery data based on the State_code data in StateNames.csv file and State in Breweries.csv file.
+
+####Common glossary terms used for the data sets.
+####Beers.csv:
+Name: Name of the beer.
+Beer ID: Unique identifier of the beer.
+ABV: Alcohol by volume of the beer.
+IBU: International Bitterness Units of the beer.
+Brewery ID: Brewery id associated with the beer.
+Style: Style of the beer.
+Ounces: Ounces of beer.
+
+####Breweries.csv:
+Brew ID: Unique identifier of the brewery.
+Name: Name of the brewery.
+City: City where the brewery is located.
+State: State where the brewery is located.
+
+####StateNames.csv:
+State_Code : Two letter code for the state.
+State_Name : State name.
 
 #Related links and Prerequisites
   * <a href = "https://cran.r-project.org/bin/windows/base/R-3.4.0-win.exe">R version 3.4.0</a>
