@@ -17,7 +17,7 @@ Based on the Brewery ID information we can tie the data back to the Brewery data
 A manually created StateNames.csv is also included as a dataset to represent state names instead of the codes in the output.
 The dataset has 51 US state codes and names. This data is merged with the Brewery data based on the State_code data in StateNames.csv file and State in Breweries.csv file.<br />
 
-####Common glossary terms used for the data sets.
+####Common glossary terms used for the data sets.<br />
 ####Beers.csv:<br />
 Name: Name of the beer.<br />
 Beer ID: Unique identifier of the beer.<br />
@@ -189,7 +189,7 @@ Only 3 columns have NA values.<br />
 
 
 ```r
-beerBrewery$Style<-ifelse(beerBrewery[,9]=="", NA, beerBrewery[,9])
+beerBrewery$Style<-ifelse(beerBrewery[,10]=="", NA, beerBrewery[,10])
 ```
 <!--The below code is used to count the number of NA is each column. -->
 
@@ -210,7 +210,7 @@ na_count
 ## Beer_ID             0
 ## ABV                62
 ## IBU              1005
-## Style            1005
+## Style               5
 ## Ounces              0
 ```
 
@@ -318,7 +318,7 @@ Based on the scatter plot above there seems to be some relationship between the 
 We can clearly see from the scatter plot that as the bitterness increases the alcohol content also increased, the plot shows a positive upward movement.
 
 From the summary Statistics we found that the mean ABV value is 0.05600.
-When we look at the scatter plot for ABV 0.05600, we can see that majority of the beer is that spot and most of the beers are less bitter.
+When we look at the scatter plot for ABV 0.05600, we can see that majority of the beer are around that spot and most of the beers around that spot are less bitter.
 
 Colorado has the largest number  of breweries in the country. Colorado also has the most alocholic beer in the country.
 The District of Columbia, North Dacota, South Dacota and West Virginia are the states with least number of breWeries.
