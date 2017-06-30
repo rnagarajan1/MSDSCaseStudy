@@ -324,3 +324,5 @@ Colorado has the largest number  of breweries in the country. Colorado also has 
 The District of Columbia, North Dacota, South Dacota and West Virginia are the states with least number of breWeries.
 
 Oregon has the most bitter beer in the country.
+
+Any inference that we arrive can be applied to only this dataset.
