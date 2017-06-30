@@ -1,0 +1,125 @@
+---
+title: "CaseStudy01"
+author: "Rangaswamy Nagarajan"
+date: "June 30, 2017"
+output: 
+  html_document:
+    keep_md: true
+---
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```{r setup, include=FALSE}
+library(ggplot2)
+getwd()
+setwd("C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Analysis")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, results='hide'}
+beers <- read.csv("C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Data/Beers.csv",header=TRUE)
+breweries <- read.csv("C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Data/Breweries.csv", header=TRUE)
+
+names(beers)[1] <- paste("Beer_Name")
+names(breweries)[2] <- paste("Brewery_Name")
+```
+
+
+## Number of breweries in each State.
+
+```{r}
+NoOfBreweriesPerState <- data.frame(table(breweries$State))
+names(NoOfBreweriesPerState)[1]<-paste("State")
+names(NoOfBreweriesPerState)[2]<-paste("Count")
+NoOfBreweriesPerState
+```
+
+## Merged Beers and Breweries data.
+```{r}
+beerBrewery<-merge(breweries, beers, by.x="Brew_ID", by.y="Brewery_id", all=TRUE)
+head(beerBrewery)
+tail(beerBrewery)
+```
+
+## Number of NA's in each column.
+<!--The below code is used to identify "" and replcae it with NA. 
+There were 5 observations with style as "". the below code is used to replace "" with NA --> 
+```{r}
+beerBrewery$Style<-ifelse(beerBrewery[,9]=="", NA, beerBrewery[,9])
+```
+<!--The below code is used to count the number of NA is each column. -->
+```{r}
+na_count <-sapply(beerBrewery, function(y) sum(length(which(is.na(y)))))
+na_count <- data.frame(na_count)
+na_count
+```
+
+
+## Median alcohol content for each state.
+```{r}
+MedABVByState <- aggregate(ABV~State, FUN = median, beerBrewery, na.rm = TRUE)
+```
+
+## Bar Chart for Median alcohol content by each state.
+
+```{r MedABVPlot, fig.width=12, fig.height=8}
+ggplot(MedABVByState, aes(x=State, y=ABV, fill=ABV))+
+  geom_bar(stat="identity")+
+  ylab("Median Alcohol Cotent")+
+  ggtitle("Medain Alcohol Content by State")+
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face="bold"))+
+  theme(axis.text = element_text(size = 8, face="bold"))+
+  theme(axis.title = element_text(size = 10, face="bold"))+
+  scale_fill_gradient(low="#FF9999",high="#000099")
+
+```
+
+
+## Median international bitterness unit for each state.
+```{r}
+MedIBUByState <- aggregate(IBU~State, FUN = median, beerBrewery, na.rm = TRUE)
+```
+
+## Bar Chart for Median international bitterness unit by each state.
+```{r MedIBUPlot, fig.width=12, fig.height=8}
+ggplot(MedIBUByState, aes(x=State, y=IBU, fill=IBU))+
+  geom_bar(stat="identity")+
+  ylab("Median International Bitterness Unit")+
+  ggtitle("Medain International Bitterness Unit by State")+
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face="bold"))+
+  theme(axis.text = element_text(size = 8, face="bold"))+
+  theme(axis.title = element_text(size = 10, face="bold"))+
+  scale_fill_gradient(low="#FF9999",high="#000099")
+```
+
+## State that has the most alcoholic beer.
+```{r}
+maxAlcoholRow<-head(beerBrewery[order(-beerBrewery$ABV),],1)
+maxAlcoholState<-as.character(maxAlcoholRow$State)
+maxAlcoholState
+```
+
+
+## State that has the most bitter beer.
+```{r}
+maxBitterRow<-head(beerBrewery[order(-beerBrewery$IBU),],1)
+maxBitterState<-as.character(maxBitterRow$State)
+maxBitterState
+```
+
+## Summary statistics for ABV (Alcohol by volume) variable.
+```{r}
+summary(beerBrewery$ABV)
+```
+
+##  Scatter plot to identify relationship between the bitterness of the beer and its alcoholic content
+```{r Scatter}
+ggplot(data=na.omit(beerBrewery),aes(x=IBU,y=ABV))+geom_point(size=1.5,alpha=.8)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
