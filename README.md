@@ -17,24 +17,24 @@ Based on the Brewery ID information we can tie the data back to the Brewery data
 
 A manually created StateNames.csv is also included as a dataset to represent state names instead of the codes in the output. The dataset has 51 US state codes and names. This data is merged with the Brewery data based on the State_code data in StateNames.csv file and State in Breweries.csv file.
 
-####Common glossary terms used for the data sets.
-####Beers.csv:
-Name: Name of the beer.
-Beer ID: Unique identifier of the beer.
-ABV: Alcohol by volume of the beer.
-IBU: International Bitterness Units of the beer.
-Brewery ID: Brewery id associated with the beer.
-Style: Style of the beer.
+####Common glossary terms used for the data sets. <br />
+####Beers.csv: <br />
+Name: Name of the beer. <br />
+Beer ID: Unique identifier of the beer. <br />
+ABV: Alcohol by volume of the beer. <br />
+IBU: International Bitterness Units of the beer. <br />
+Brewery ID: Brewery id associated with the beer. <br />
+Style: Style of the beer. <br />
 Ounces: Ounces of beer.
 
-####Breweries.csv:
-Brew ID: Unique identifier of the brewery.
-Name: Name of the brewery.
-City: City where the brewery is located.
+####Breweries.csv: <br />
+Brew ID: Unique identifier of the brewery. <br />
+Name: Name of the brewery. <br />
+City: City where the brewery is located. <br />
 State: State where the brewery is located.
 
-####StateNames.csv:
-State_Code : Two letter code for the state.
+####StateNames.csv: <br />
+State_Code : Two letter code for the state. <br />
 State_Name : State name.
 
 #Related links and Prerequisites
