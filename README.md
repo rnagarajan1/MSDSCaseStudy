@@ -2,7 +2,7 @@
 author: "Rangaswamy Nagarajan" <br />
 date: "June 30, 2017"<br /> 
 
-This is a Case Study created for MSDS 6306 course based on Beers.csv and Breweries.csv provided.
+This is a Case Study created for MSDS 6306 course based on Beers.csv and Breweries.csv data provided.
 
 #Data Set Info <br />
 

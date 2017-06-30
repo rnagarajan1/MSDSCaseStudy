@@ -2,6 +2,33 @@
 Rangaswamy Nagarajan  
 June 30, 2017  
 
+## Beer
+
+Beer is the world's oldest and most widely consumed alcoholic drink. It is the third most popular drink overall, after water and tea.<br />
+This case study is about the analysis of data collected about Beers and Breweries in the United States of America. The data set contains a list of 2,410 US beers and 557 US breweries. 51 States are represented in the datasets.
+
+Breweries dataset contains the list of all the breweries by City and Statewise in the USA.
+It also contains the Name of the brewery and an ID for the brewery.
+
+Beers dataset contains a list of beers available in USA.
+The details that are avaialble in the dataset are Name, Beer ID, Brewery ID, Alcohol by Volume(ABV), International Bitterness Unit(IBU), Style and Ounces.
+Based on the Brewery ID information we can tie the data back to the Brewery data and identify where a particular Beer was brewed.<br />
+
+####Common glossary terms used for the data sets.<br />
+####<br />Beers.csv:<br />
+Name: Name of the beer.<br />
+Beer ID: Unique identifier of the beer.<br />
+ABV: Alcohol by volume of the beer.<br />
+IBU: International Bitterness Units of the beer.<br />
+Brewery ID: Brewery id associated with the beer.<br />
+Style: Style of the beer.<br />
+Ounces: Ounces of beer.
+
+####<br />Breweries.csv:<br />
+Brew ID: Unique identifier of the brewery.<br />
+Name: Name of the brewery.<br />
+City: City where the brewery is located.<br />
+State: State where the brewery is located.<br />
 
 
 
@@ -9,20 +36,10 @@ June 30, 2017
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 getwd()
-```
-
-```
-## [1] "C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Analysis"
-```
-
-```r
 setwd("C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Analysis")
 ```
 
-## Beer
 
-Beer is the world's oldest and most widely consumed alcoholic drink. It is the third most popular drink overall, after water and tea.
-This case study is about the analysis of data collected about Beers and Breweries in the United States of America. The data set contains a list of 2,410 US beers and 557 US breweries. 
 
 
 
@@ -35,8 +52,8 @@ names(breweries)[2] <- paste("Brewery_Name")
 ```
 
 
-## Number of breweries in each State.
-
+## Below is the number of breweries in each State.
+<!-- Below code is used to identify the number of breweries in each state.-->
 
 ```r
 NoOfBreweriesPerState <- data.frame(table(breweries$State))
@@ -152,9 +169,14 @@ tail(beerBrewery)
 ## 2410     12
 ```
 
-## Number of NA's in each column.
-<!--The below code is used to identify "" and replcae it with NA. 
-There were 5 observations with style as "". the below code is used to replace "" with NA --> 
+## Below is the number of NA's in each column.
+Only 3 columns have NA values.<br />
+  1. ABV column has 62 NA's.<br />
+  2. IBU column has 1005 NA's.<br />
+  3. Style column has 5 NA's.<br />
+
+<!--The below code is used to identify "" and replcae it with NA. There were 5 observations with style as "". the below code is used to replace "" with NA --> 
+
 
 ```r
 beerBrewery$Style<-ifelse(beerBrewery[,9]=="", NA, beerBrewery[,9])
@@ -188,7 +210,7 @@ na_count
 MedABVByState <- aggregate(ABV~State, FUN = median, beerBrewery, na.rm = TRUE)
 ```
 
-## Bar Chart for Median alcohol content by each state.
+## Bar chart for median alcohol content by each state.
 
 
 ```r
@@ -211,7 +233,7 @@ ggplot(MedABVByState, aes(x=State, y=ABV, fill=ABV))+
 MedIBUByState <- aggregate(IBU~State, FUN = median, beerBrewery, na.rm = TRUE)
 ```
 
-## Bar Chart for Median international bitterness unit by each state.
+## Bar chart for median international bitterness unit by each state.
 
 ```r
 ggplot(MedIBUByState, aes(x=State, y=IBU, fill=IBU))+
@@ -226,7 +248,7 @@ ggplot(MedIBUByState, aes(x=State, y=IBU, fill=IBU))+
 
 ![](CaseStudy01_files/figure-html/MedIBUPlot-1.png)<!-- -->
 
-## State that has the most alcoholic beer.
+## Colorado is the state that has the most alcoholic beer.
 
 ```r
 maxAlcoholRow<-head(beerBrewery[order(-beerBrewery$ABV),],1)
@@ -239,7 +261,7 @@ maxAlcoholState
 ```
 
 
-## State that has the most bitter beer.
+## Oregon is the state that has the most bitter beer.
 
 ```r
 maxBitterRow<-head(beerBrewery[order(-beerBrewery$IBU),],1)
@@ -261,6 +283,9 @@ summary(beerBrewery$ABV)
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 ## 0.00100 0.05000 0.05600 0.05977 0.06700 0.12800      62
 ```
+The summary statistics show that the Minimum ABV is 0.00100, Median ABVis 0.05600 and Mean ABV is 0.05977.<br />
+The Max ABV is 0.12800, which belongs to the state of Colorado that we identified in the previous question.<br />
+There are also 62 NA's in the ABV data.
 
 ##  Scatter plot to identify relationship between the bitterness of the beer and its alcoholic content
 
@@ -270,4 +295,5 @@ ggplot(data=na.omit(beerBrewery),aes(x=IBU,y=ABV))+geom_point(size=1.5,alpha=.8)
 
 ![](CaseStudy01_files/figure-html/Scatter-1.png)<!-- -->
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Based on the scatter plot above there seems to be some relationship between the bitterness and alcohol content of the beer.
+We can clearly see from the scatter plot that as the bitterness increases the alcohol content also increased, the plot shows a positive upward movement.
