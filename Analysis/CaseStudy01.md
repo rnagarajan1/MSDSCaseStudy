@@ -2,15 +2,28 @@
 Rangaswamy Nagarajan  
 June 30, 2017  
 
+
+
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+getwd()
+```
 
+```
+## [1] "C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Analysis"
+```
 
+```r
+setwd("C:/Users/swara/OneDrive/Documents/MSDS/Data Science/CaseStudy/MSDSCaseStudy01/Analysis")
+```
 
-## R Markdown
+## Beer
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Beer is the world's oldest and most widely consumed alcoholic drink. It is the third most popular drink overall, after water and tea.
+This case study is about the analysis of data collected about Beers and Breweries in the United States of America. The data set contains a list of 2,410 US beers and 557 US breweries. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 
 ```r
