@@ -5,7 +5,7 @@ June 30, 2017
 ## Beer
 
 Beer is the world's oldest and most widely consumed alcoholic drink. It is the third most popular drink overall, after water and tea.<br />
-This case study is about the analysis of data collected about Beers and Breweries in the United States of America. The data set contains a list of 2,410 US beers and 557 US breweries. 51 States are represented in the datasets.
+This case study is about the analysis of data collected about Beers and Breweries in the United States of America. The data set contains a list of 2,410 US beers and 558 US breweries. 51 States are represented in the datasets.
 
 Breweries dataset contains the list of all the breweries by City and Statewise in the USA.
 It also contains the Name of the brewery and an ID for the brewery.
